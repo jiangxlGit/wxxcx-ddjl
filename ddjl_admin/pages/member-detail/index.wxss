@@ -1,0 +1,281 @@
+.page {
+  min-height: 100vh;
+  background: #fff;
+  padding-bottom: calc(132rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0 26rpx;
+}
+
+.avatar {
+  width: 192rpx;
+  height: 192rpx;
+  border-radius: 52rpx;
+  box-shadow: 0 18rpx 40rpx rgba(17, 24, 39, 0.12);
+  border: 4rpx solid #fff;
+  background: #f9fafb;
+}
+
+.name {
+  margin-top: 18rpx;
+  font-size: 40rpx;
+  font-weight: 900;
+}
+
+.phone {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18rpx;
+  margin: 18rpx 0 24rpx;
+}
+
+.kpi {
+  border-radius: 32rpx;
+  padding: 26rpx;
+  text-align: center;
+}
+
+.kpiPink {
+  background: rgba(255, 117, 140, 0.06);
+  border: 2rpx solid rgba(255, 117, 140, 0.10);
+}
+
+.kpiGray {
+  background: #f9fafb;
+}
+
+.kpiLabel {
+  font-size: 18rpx;
+  font-weight: 900;
+  color: rgba(255, 117, 140, 0.55);
+  letter-spacing: 2rpx;
+}
+
+.kpiLabel.gray {
+  color: #9ca3af;
+  opacity: 0.8;
+}
+
+.kpiVal {
+  margin-top: 10rpx;
+  font-size: 56rpx;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.kpiVal.gray2 {
+  color: #6b7280;
+}
+
+.info {
+  margin-bottom: 26rpx;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  padding: 26rpx;
+  border-radius: 32rpx;
+  background: #f7f8fa;
+  border: 2rpx solid #f3f4f6;
+  margin-bottom: 18rpx;
+}
+
+.icon {
+  width: 44rpx;
+  text-align: center;
+}
+
+.infoMid {
+  flex: 1;
+}
+
+.infoHint {
+  font-size: 18rpx;
+  font-weight: 900;
+  color: #9ca3af;
+}
+
+.infoVal {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+  font-weight: 900;
+  color: #374151;
+}
+
+.note {
+  padding: 26rpx;
+  border-radius: 32rpx;
+  background: #f7f8fa;
+  border: 2rpx solid #f3f4f6;
+}
+
+.noteHint {
+  font-size: 18rpx;
+  font-weight: 900;
+  color: #9ca3af;
+  margin-bottom: 10rpx;
+}
+
+.noteVal {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 18rpx;
+}
+
+.bottom-action {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(24rpx + env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.bottom-btn {
+  width: 280rpx;
+  height: 82rpx;
+  border-radius: 999rpx;
+  border: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  box-shadow: 0 14rpx 28rpx rgba(255, 117, 140, 0.28);
+  font-size: 28rpx;
+  font-weight: 900;
+  line-height: 82rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.bottom-btn::after {
+  border: none;
+}
+
+/* 贴近截图：左灰右粉渐变按钮 */
+button.btn.ghost {
+  background: #f3f4f6;
+  border: 2rpx solid #f3f4f6;
+  color: #6b7280;
+  font-weight: 900;
+}
+
+button.btn.flex2 {
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  border: none;
+}
+
+.flex1,
+.flex2 {
+  flex: 1;
+}
+
+.full {
+  width: 100%;
+}
+
+.mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8rpx);
+  z-index: 60;
+}
+
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top-left-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+  padding: 44rpx;
+  z-index: 61;
+}
+
+.sheetHead {
+  margin-bottom: 34rpx;
+}
+
+.sheetBtn {
+  font-weight: 900;
+}
+
+.sheetBtn.pink {
+  color: var(--primary);
+}
+
+.sheetTitle {
+  font-weight: 900;
+  font-size: 32rpx;
+}
+
+.sheetInputRow {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  background: #f9fafb;
+  border: 2rpx solid #f3f4f6;
+  border-radius: 32rpx;
+  padding: 22rpx 26rpx;
+}
+
+.sheetIcon {
+  width: 44rpx;
+  text-align: center;
+}
+
+.sheetInput {
+  flex: 1;
+  font-size: 26rpx;
+  font-weight: 800;
+}
+
+.sheetGrid {
+  margin-top: 18rpx;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18rpx;
+}
+
+.sheetBox {
+  background: #f9fafb;
+  border: 2rpx solid #f3f4f6;
+  border-radius: 32rpx;
+  padding: 22rpx 26rpx;
+}
+
+.sheetLabel {
+  font-size: 18rpx;
+  font-weight: 900;
+  color: #9ca3af;
+  margin-bottom: 8rpx;
+}
+
+.pickerVal {
+  font-size: 26rpx;
+  font-weight: 900;
+  color: #374151;
+}

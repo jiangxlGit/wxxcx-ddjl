@@ -1,0 +1,15 @@
+<view class="nav">
+  <view class="title">{{title}}</view>
+  <view class="tabs" wx:if="{{tabs && tabs.length}}">
+    <view
+      class="tab {{active === item.key ? 'active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="onTap"
+    >
+      {{item.label}}
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,27 @@
+<view class="nav safe" style="padding-bottom: calc(20rpx + env(safe-area-inset-bottom));">
+  <view
+    wx:for="{{tabs}}"
+    wx:key="id"
+    class="item {{active === item.id ? 'active' : ''}}"
+    data-id="{{item.id}}"
+    bindtap="onTap"
+  >
+    <view class="icon {{item.id}}">
+      <view class="i-user" wx:if="{{item.id === 'members'}}"></view>
+
+      <view class="i-cal" wx:elif="{{item.id === 'today'}}">
+        <view class="cal-top"></view>
+        <view class="cal-body"></view>
+        <view class="cal-dot"></view>
+      </view>
+
+      <view class="i-chart" wx:elif="{{item.id === 'stats'}}">
+        <view class="bar b1"></view>
+        <view class="bar b2"></view>
+        <view class="bar b3"></view>
+      </view>
+    </view>
+    <view class="label">{{item.label}}</view>
+  </view>
+</view>
+

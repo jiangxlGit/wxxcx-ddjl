@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="container safe-bottom" style="padding-bottom: 170rpx;">
+    <view class="head">
+      <view class="h1 italic">今日课表</view>
+      <view class="sub muted">{{statDate}} · 共有 {{todayLessons.length}} 位学员预约</view>
+    </view>
+
+    <view class="empty card" wx:if="{{todayLessons.length === 0}}">
+      <view class="muted">今日暂无课程预约</view>
+    </view>
+
+    <view wx:for="{{todayLessons}}" wx:key="id" class="swipe">
+      <view class="actions">
+        <view class="act danger" bindtap="onCancel" data-id="{{item.id}}">取消</view>
+        <view class="act pink" wx:if="{{!item.isCompletedToday}}" bindtap="onComplete" data-id="{{item.id}}">消课</view>
+      </view>
+      <view
+        class="cardRow"
+        style="transform: translateX({{item._offsetX || 0}}px);"
+        data-id="{{item.id}}"
+        bindtouchstart="onTouchStart"
+        bindtouchmove="onTouchMove"
+        bindtouchend="onTouchEnd"
+      >
+        <view class="timeBox {{item.isCompletedToday ? 'done' : ''}}">
+          <view class="tt">TIME</view>
+          <view class="tv">{{item._time}}</view>
+        </view>
+        <view class="mid">
+          <view class="name {{item.isCompletedToday ? 'line' : ''}}">{{item.name}}</view>
+          <view class="loc muted">{{item.location || '工作室'}}</view>
+        </view>
+        <view class="status {{item.isCompletedToday ? 'gray' : 'green'}}">
+          {{item.isCompletedToday ? '已结课' : '预约中'}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <dd-bottom-tabs active="today" bind:change="onTabChange" />
+</view>
+

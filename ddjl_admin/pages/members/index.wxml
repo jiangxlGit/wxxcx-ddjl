@@ -1,0 +1,99 @@
+<view class="members-page">
+  <view class="capsule-safe" style="height: {{navSafeHeight}}px;"></view>
+
+  <view class="search-row">
+    <view class="search-wrap">
+      <view class="search-icon">⌕</view>
+      <input
+        class="search-input"
+        placeholder="搜索会员姓名或联系方式..."
+        value="{{searchTerm}}"
+        bindinput="onSearch"
+      />
+    </view>
+
+    <view class="invite-btn" bindtap="goInvite">
+      <view class="invite-icon">
+        <view class="invite-head"></view>
+        <view class="invite-body"></view>
+      </view>
+      <view class="invite-text">邀请</view>
+    </view>
+  </view>
+
+  <view class="summary-grid">
+    <view class="summary-card light">
+      <view class="summary-label">总会员</view>
+      <view class="summary-value">{{totalMembers}}</view>
+    </view>
+
+    <view class="summary-card pink">
+      <view class="summary-label accent">本周新增</view>
+      <view class="summary-bottom">
+        <view class="summary-value">{{weekNewCount}}</view>
+        <view class="new-pill">NEW</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-head">
+    <view class="section-title">会员名录</view>
+    <view class="section-tip">
+      <view class="tip-icon">↜</view>
+      <view class="tip-text">左滑可进行快速操作</view>
+    </view>
+  </view>
+
+  <scroll-view class="member-scroll" scroll-y="{{memberScrollEnabled}}" enhanced="true" show-scrollbar="{{false}}">
+    <view class="member-list">
+      <view
+        class="swipe-row"
+        wx:for="{{filtered}}"
+        wx:key="id"
+      >
+        <view class="swipe-actions">
+          <view class="swipe-btn detail" data-id="{{item.id}}" catchtap="onActionDetailTap">详情</view>
+          <view class="swipe-btn schedule" data-id="{{item.id}}" catchtap="onActionScheduleTap">排课</view>
+        </view>
+
+        <view
+          class="member-card"
+          style="transform: translateX({{item._offsetX || 0}}px);"
+          data-id="{{item.id}}"
+          bindtap="onMemberTap"
+          bindtouchstart="onMemberTouchStart"
+          bindtouchmove="onMemberTouchMove"
+          bindtouchend="onMemberTouchEnd"
+          bindtouchcancel="onMemberTouchCancel"
+        >
+          <view class="avatar-wrap">
+            <image class="avatar" src="{{item.avatar}}" mode="aspectFill" />
+            <view class="new-badge" wx:if="{{index === 0}}">NEW</view>
+          </view>
+
+          <view class="member-main">
+            <view class="member-name">{{item.name}}</view>
+
+            <view class="meta-row">
+              <view class="meta-item">
+                未上 <text class="num pink">{{item.remainingLessons}}</text> 节
+              </view>
+              <view class="meta-item">
+                已上 <text class="num purple">{{item.completedLessons}}</text> 节
+              </view>
+            </view>
+          </view>
+
+          <view class="schedule-side">
+            <view class="schedule-status-row">
+              <view class="schedule-tag {{item.hasSchedule ? 'on' : 'off'}}">{{item.scheduleStatusText}}</view>
+              <view class="chev">›</view>
+            </view>
+            <view class="schedule-time-line {{item.hasSchedule ? 'on' : 'off'}}">{{item.scheduleTimeLine1}}</view>
+            <view class="schedule-time-line {{item.hasSchedule ? 'on' : 'off'}}">{{item.scheduleTimeLine2}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

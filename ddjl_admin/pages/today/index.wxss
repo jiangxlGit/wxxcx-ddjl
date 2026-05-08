@@ -1,0 +1,132 @@
+.page {
+  min-height: 100vh;
+}
+
+.head {
+  padding: 18rpx 0 26rpx;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.sub {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.empty {
+  padding: 120rpx 0;
+  text-align: center;
+}
+
+.swipe {
+  position: relative;
+  margin-bottom: 18rpx;
+  border-radius: 32rpx;
+  overflow: hidden;
+}
+
+.actions {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 0;
+}
+
+.act {
+  width: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: #fff;
+}
+
+.act.danger {
+  background: #f87171;
+}
+
+.act.pink {
+  background: var(--primary);
+}
+
+.cardRow {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 28rpx;
+  border-radius: 32rpx;
+  display: flex;
+  align-items: center;
+  gap: 22rpx;
+  transition: transform 200ms ease-out;
+}
+
+.timeBox {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 26rpx;
+  background: rgba(255, 117, 140, 0.10);
+  color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6rpx;
+}
+
+.timeBox.done {
+  background: #f9fafb;
+  color: #d1d5db;
+}
+
+.tt {
+  font-size: 16rpx;
+  font-weight: 900;
+  opacity: 0.4;
+}
+
+.tv {
+  font-size: 24rpx;
+  font-weight: 900;
+}
+
+.mid {
+  flex: 1;
+}
+
+.name {
+  font-weight: 900;
+}
+
+.name.line {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.loc {
+  margin-top: 8rpx;
+  font-size: 20rpx;
+  font-weight: 700;
+}
+
+.status {
+  font-size: 18rpx;
+  font-weight: 900;
+  padding: 10rpx 14rpx;
+  border-radius: 14rpx;
+}
+
+.status.green {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+
+.status.gray {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+

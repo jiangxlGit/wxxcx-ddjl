@@ -1,0 +1,46 @@
+<view class="tab-bar">
+  <view
+    class="tab-item"
+    data-path="pages/members/index"
+    bindtap="onSwitchTab"
+  >
+    <view class="tab-pill {{selectedPath === 'pages/members/index' ? 'active' : ''}}">
+      <view class="tab-icon {{selectedPath === 'pages/members/index' ? 'active' : ''}}">
+        <view class="i-members-head"></view>
+        <view class="i-members-body"></view>
+      </view>
+      <text class="tab-text">会员</text>
+    </view>
+  </view>
+
+  <view
+    class="tab-item"
+    data-path="pages/today-v2/index"
+    bindtap="onSwitchTab"
+  >
+    <view class="tab-pill {{selectedPath === 'pages/today-v2/index' ? 'active' : ''}}">
+      <view class="tab-icon {{selectedPath === 'pages/today-v2/index' ? 'active' : ''}}">
+        <view class="i-calendar-box"></view>
+        <view class="i-calendar-top"></view>
+        <view class="i-calendar-dot"></view>
+      </view>
+      <text class="tab-text">课表</text>
+    </view>
+  </view>
+
+  <view
+    class="tab-item"
+    data-path="pages/stats/index"
+    bindtap="onSwitchTab"
+  >
+    <view class="tab-pill {{selectedPath === 'pages/stats/index' ? 'active' : ''}}">
+      <view class="tab-icon {{selectedPath === 'pages/stats/index' ? 'active' : ''}}">
+        <view class="i-stats-base"></view>
+        <view class="i-stats-bar b1"></view>
+        <view class="i-stats-bar b2"></view>
+        <view class="i-stats-bar b3"></view>
+      </view>
+      <text class="tab-text">统计</text>
+    </view>
+  </view>
+</view>

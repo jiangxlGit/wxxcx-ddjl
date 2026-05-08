@@ -1,0 +1,12 @@
+<view class="wrap" aria-hidden="true">
+  <svg viewBox="0 0 500 200" preserveAspectRatio="none" class="svg">
+    <defs>
+      <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FF9A9E" />
+        <stop offset="100%" stop-color="#FAD0C4" />
+      </linearGradient>
+    </defs>
+    <path d="M0,80 C150,200 350,0 500,100 L500,0 L0,0 Z" fill="url(#pinkGradient)" />
+  </svg>
+</view>
+

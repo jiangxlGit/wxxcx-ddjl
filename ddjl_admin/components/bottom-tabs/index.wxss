@@ -1,0 +1,130 @@
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #f3f4f6;
+  padding: 14rpx 28rpx;
+  padding-bottom: 34rpx;
+  display: flex;
+  justify-content: space-around;
+  z-index: 50;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+  color: #cfd3da;
+  transform: scale(1);
+}
+
+.item.active {
+  color: var(--primary);
+  transform: scale(1.02);
+}
+
+.label {
+  font-size: 20rpx;
+  font-weight: 800;
+  color: #9ca3af;
+}
+
+.item.active .label {
+  color: var(--primary);
+}
+
+.icon {
+  width: 44rpx;
+  height: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 学员：圆形描边 */
+.i-user {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 999rpx;
+  border: 4rpx solid currentColor;
+  box-sizing: border-box;
+}
+
+/* 课表：简化日历 */
+.i-cal {
+  width: 32rpx;
+  height: 30rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.cal-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 8rpx;
+  border: 4rpx solid currentColor;
+  border-bottom: 0;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.cal-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6rpx;
+  bottom: 0;
+  border: 4rpx solid currentColor;
+  border-top: 0;
+  border-bottom-left-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.cal-dot {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 999rpx;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
+
+/* 统计：三根柱 */
+.i-chart {
+  width: 34rpx;
+  height: 30rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4rpx;
+}
+
+.bar {
+  width: 6rpx;
+  background: currentColor;
+  border-radius: 6rpx;
+  opacity: 0.9;
+}
+
+.b1 {
+  height: 14rpx;
+}
+
+.b2 {
+  height: 22rpx;
+}
+
+.b3 {
+  height: 18rpx;
+}
+

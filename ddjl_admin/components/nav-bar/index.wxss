@@ -1,0 +1,30 @@
+.nav {
+  padding: 24rpx 24rpx 0;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 18rpx;
+}
+
+.tabs {
+  display: flex;
+  gap: 14rpx;
+  padding-bottom: 12rpx;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  padding: 14rpx 18rpx;
+  border-radius: 999rpx;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: #fff;
+}
+
+.tab.active {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+

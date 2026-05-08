@@ -1,0 +1,168 @@
+.tab-bar {
+  display: flex;
+  height: calc(85rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1px solid #eee;
+  box-sizing: border-box;
+  padding: 0 10rpx;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;   /* ✅ 居中 */
+  align-items: center;
+}
+
+/* ❗核心：改成自适应胶囊 */
+.tab-pill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 78rpx;
+  padding: 2rpx 18rpx;
+  border-radius: 999rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  transition: all 200ms ease;
+}
+
+.tab-pill.active {
+  background: linear-gradient(90deg, #ff4d8f, #ff7aa2);
+  box-shadow: 0 4rpx 12rpx rgba(255, 77, 143, 0.3);
+}
+
+.tab-icon {
+  width: 45rpx;
+  height: 45rpx;
+  position: relative;
+}
+
+/* ===== 默认颜色 ===== */
+.i-members-head,
+.i-members-body,
+.i-calendar-box,
+.i-calendar-top,
+.i-stats-base {
+  border-color: #9ca3af;
+}
+
+.i-calendar-dot,
+.i-stats-bar {
+  background: #9ca3af;
+}
+
+/* ===== 激活态 ===== */
+.tab-icon.active .i-members-head,
+.tab-icon.active .i-members-body,
+.tab-icon.active .i-calendar-box,
+.tab-icon.active .i-calendar-top,
+.tab-icon.active .i-stats-base {
+  border-color: #ffffff;
+}
+
+.tab-icon.active .i-calendar-dot,
+.tab-icon.active .i-stats-bar {
+  background: #ffffff;
+}
+
+/* ===== 会员 ===== */
+.i-members-head {
+  position: absolute;
+  left: 50%;
+  top: 6rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  border: 3rpx solid;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+}
+
+.i-members-body {
+  position: absolute;
+  left: 50%;
+  bottom: 6rpx;
+  width: 26rpx;
+  height: 14rpx;
+  border: 3rpx solid;
+  border-top-left-radius: 14rpx;
+  border-top-right-radius: 14rpx;
+  border-bottom: 0;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+}
+
+/* ===== 日历 ===== */
+.i-calendar-box {
+  position: absolute;
+  inset: 6rpx;
+  border: 3rpx solid;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.i-calendar-top {
+  position: absolute;
+  left: 9rpx;
+  right: 9rpx;
+  top: 16rpx;
+  border-top: 3rpx solid;
+}
+
+.i-calendar-dot {
+  position: absolute;
+  left: 50%;
+  bottom: 11rpx;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* ===== 统计 ===== */
+.i-stats-base {
+  position: absolute;
+  left: 6rpx;
+  right: 6rpx;
+  bottom: 6rpx;
+  border-top: 3rpx solid;
+}
+
+.i-stats-bar {
+  position: absolute;
+  bottom: 9rpx;
+  width: 5rpx;
+  border-radius: 3rpx;
+}
+
+.i-stats-bar.b1 {
+  left: 10rpx;
+  height: 10rpx;
+}
+
+.i-stats-bar.b2 {
+  left: 20rpx;
+  height: 15rpx;
+}
+
+.i-stats-bar.b3 {
+  left: 30rpx;
+  height: 21rpx;
+}
+
+/* ===== 文本 ===== */
+.tab-text {
+  font-size: 24rpx;
+  line-height: 1;
+  font-weight: 500;   /* ✅ 优化 */
+  color: #9ca3af;
+  margin-top: 4rpx;
+}
+
+.tab-pill.active .tab-text {
+  color: #ffffff;
+}

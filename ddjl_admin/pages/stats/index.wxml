@@ -1,0 +1,148 @@
+<view class="stats-page">
+  <view class="top-safe" style="height: {{navSafeHeight}}px;"></view>
+
+  <view class="stats-container">
+    <view class="overview-head" style="top: {{navSafeHeight}}px;">
+      <view>
+        <view class="title">今日数据总览</view>
+      </view>
+      <view class="update-pill">更新于 {{updatedAt}}</view>
+    </view>
+    <view class="overview-spacer"></view>
+
+    <view class="income-card">
+      <view class="income-main">
+        <view class="income-top">
+          <view class="money-icon">
+            <view class="money-dot d1"></view>
+            <view class="money-dot d2"></view>
+          </view>
+        </view>
+        <view class="income-label">总收入</view>
+        <view class="income-value">
+          <text class="currency">¥</text>{{daily.revenueMain}}<text class="cents">.00</text>
+        </view>
+      </view>
+
+      <view class="income-metrics">
+        <view class="small-card income-small-card">
+          <view class="circle-icon done">
+            <view class="check c1"></view>
+            <view class="check c2"></view>
+          </view>
+          <view class="small-copy">
+            <view class="small-label done-label">已上课数</view>
+            <view class="small-value done-value">{{daily.completed}}</view>
+          </view>
+        </view>
+
+        <view class="small-card income-small-card">
+          <view class="circle-icon clock">
+            <view class="clock-face">
+              <view class="clock-hand h1"></view>
+              <view class="clock-hand h2"></view>
+            </view>
+          </view>
+          <view class="small-copy">
+            <view class="small-label pending-label">未上课数</view>
+            <view class="small-value pending-value">{{daily.pending}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="cancel-card">
+      <view class="cancel-left">
+        <view class="cancel-icon">
+          <view class="cancel-x x1"></view>
+          <view class="cancel-x x2"></view>
+        </view>
+        <view class="cancel-text">今日取消课程</view>
+      </view>
+      <view class="cancel-value">{{daily.cancelled}}</view>
+    </view>
+
+    <view class="section-head">
+      <view class="section-title">选择日期</view>
+      <view class="locate-btn" bindtap="onLocateToday">一键定位当天</view>
+    </view>
+
+    <view class="days">
+      <view class="days-row">
+        <view
+          wx:for="{{days}}"
+          wx:key="date"
+          class="day {{statDate === item.date ? 'active' : ''}}"
+          data-date="{{item.date}}"
+          bindtap="onPickDate"
+        >
+          <view class="week">{{item.week}}</view>
+          <view class="date-num">{{item.day}}</view>
+          <view class="day-dot" wx:if="{{statDate === item.date}}"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="ai-card">
+      <view class="ai-head">
+        <view class="ai-title-row">
+          <view class="ai-icon">AI</view>
+          <view>
+            <view class="ai-title">AI排课建议</view>
+          </view>
+        </view>
+        <view class="ai-refresh" bindtap="onRefreshAiAdvice">
+          <view class="ai-refresh-text">刷新建议</view>
+          <view class="ai-refresh-time">{{aiUpdatedAt}}</view>
+        </view>
+      </view>
+      <view class="ai-advice">{{aiAdvice}}</view>
+    </view>
+
+    <view class="section-title trend-title">趋势分析</view>
+
+    <view class="chart-card course-card">
+      <view class="chart-head">
+        <view>
+          <view class="chart-title">历史上课曲线图</view>
+          <view class="chart-sub">MONTHLY COURSE VOLUME</view>
+        </view>
+        <view class="chart-number">
+          <view><text>{{courseTotal}}</text><text class="unit"> 节</text></view>
+          <view class="chart-rate">+12.4%</view>
+        </view>
+      </view>
+      <view class="curve-wrap">
+        <image class="course-canvas" src="{{courseCurveSvg}}" mode="aspectFit"></image>
+      </view>
+      <view class="chart-labels">
+        <view>JAN</view>
+        <view>MAR</view>
+        <view>MAY</view>
+        <view>JUL</view>
+        <view>SEP</view>
+        <view>NOV</view>
+      </view>
+    </view>
+
+    <view class="chart-card revenue-card">
+      <view class="chart-head">
+        <view>
+          <view class="chart-title">收入趋势分析</view>
+          <view class="chart-sub">REVENUE FORECAST</view>
+        </view>
+        <view class="chart-number purple">
+          <view>{{revenueForecast}}</view>
+          <view class="chart-rate purple">+5.2%</view>
+        </view>
+      </view>
+      <view class="bar-chart">
+        <view wx:for="{{revenueBars}}" wx:key="week" class="bar-item">
+          <view class="bar {{item.active ? 'active' : ''}}" style="height: {{item.height}}rpx;"></view>
+          <view class="bar-label">{{item.week}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

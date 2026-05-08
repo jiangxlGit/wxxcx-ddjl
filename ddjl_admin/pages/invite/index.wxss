@@ -1,0 +1,48 @@
+.page {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.wrap {
+  min-height: calc(100vh - 48rpx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 36rpx;
+}
+
+.qrBox {
+  padding: 64rpx;
+  border-radius: 60rpx;
+  background: rgba(255, 117, 140, 0.06);
+  border: 2rpx solid rgba(255, 117, 140, 0.10);
+  margin-bottom: 34rpx;
+}
+
+.qr {
+  width: 320rpx;
+  height: 320rpx;
+  border-radius: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 180rpx;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.desc {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  text-align: center;
+  padding: 0 24rpx;
+  margin-bottom: 54rpx;
+}
+
+.btn.dark {
+  width: 100%;
+  background: #111827;
+  border-radius: 32rpx;
+}

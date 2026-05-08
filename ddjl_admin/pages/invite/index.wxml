@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="container">
+    <view class="wrap">
+      <view class="qrBox">
+        <view class="qr">⌁</view>
+      </view>
+      <view class="h2">邀请学员绑定</view>
+      <view class="desc muted">学员扫码即可查看剩余课时与排课，消课后会通过微信实时通知学员。（此处为占位二维码）</view>
+      <button class="btn dark" bindtap="goBack">返回列表</button>
+    </view>
+  </view>
+</view>

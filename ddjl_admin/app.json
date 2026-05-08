@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/members/index",
+    "pages/login/index",
+    "pages/today/index",
+    "pages/today-v2/index",
+    "pages/stats/index",
+    "pages/member-detail/index",
+    "pages/member-edit/index",
+    "pages/invite/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "DDJL 管理端",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F3F4F6",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/members/index",
+        "text": "会员"
+      },
+      {
+        "pagePath": "pages/today-v2/index",
+        "text": "课表"
+      },
+      {
+        "pagePath": "pages/stats/index",
+        "text": "统计"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "dd-nav-bar": "components/nav-bar/index",
+    "dd-bottom-tabs": "components/bottom-tabs/index",
+    "dd-curve-bg": "components/curve-bg/index"
+  }
+}

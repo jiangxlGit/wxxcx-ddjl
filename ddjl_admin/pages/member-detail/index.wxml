@@ -1,0 +1,91 @@
+<view class="page">
+  <view class="container safe-bottom" style="padding-bottom: 40rpx;">
+    <view class="center">
+      <image class="avatar" src="{{member.avatar}}" mode="aspectFill" />
+      <view class="name">{{member.name}}</view>
+      <view class="phone muted">{{member.phone}}</view>
+    </view>
+
+    <view class="kpis">
+      <view class="kpi kpiPink">
+        <view class="kpiLabel">课时余量</view>
+        <view class="kpiVal">{{member.remainingLessons}}</view>
+      </view>
+      <view class="kpi kpiGray">
+        <view class="kpiLabel gray">已上课时</view>
+        <view class="kpiVal gray2">{{member.completedLessons}}</view>
+      </view>
+    </view>
+
+    <view class="info">
+      <view class="infoRow">
+        <view class="icon">📅</view>
+        <view class="infoMid">
+          <view class="infoHint">上课时间段</view>
+          <view class="infoVal">{{member.schedule || '暂无排课'}}</view>
+        </view>
+      </view>
+      <view class="infoRow">
+        <view class="icon">📍</view>
+        <view class="infoMid">
+          <view class="infoHint">上课地点</view>
+          <view class="infoVal">{{member.location || '待分配'}}</view>
+        </view>
+      </view>
+      <view class="note" wx:if="{{member.note}}">
+        <view class="noteHint">备注信息</view>
+        <view class="noteVal">{{member.note}}</view>
+      </view>
+    </view>
+
+    <view class="actions row" wx:if="{{member.schedule !== '待排课'}}">
+      <button class="btn ghost flex1" bindtap="onCancel">取消预约</button>
+      <button class="btn flex2 shadow-pink" bindtap="onComplete">确认消课</button>
+    </view>
+    <view class="actions" wx:else>
+      <button class="btn full shadow-pink" bindtap="openSheet">立即预约排课</button>
+    </view>
+  </view>
+
+  <view class="bottom-action">
+    <button class="bottom-btn edit-btn" bindtap="goEdit">编辑</button>
+  </view>
+
+  <view class="mask" wx:if="{{showSheet}}" bindtap="closeSheet"></view>
+  <view class="sheet" wx:if="{{showSheet}}">
+    <view class="sheetHead row">
+      <view class="sheetBtn muted" bindtap="closeSheet">取消</view>
+      <view class="sheetTitle">预约上课时间</view>
+      <view class="sheetBtn pink" bindtap="confirmSheet">确认预约</view>
+    </view>
+
+    <view class="sheetBody">
+      <view class="sheetInputRow">
+        <view class="sheetIcon">📍</view>
+        <input
+          class="sheetInput"
+          placeholder="输入上课教室或地点"
+          value="{{scheduleLocation}}"
+          bindinput="onLocation"
+        />
+      </view>
+
+      <view class="sheetGrid">
+        <view class="sheetBox">
+          <view class="sheetLabel">日期</view>
+          <picker mode="date" value="{{scheduleDate}}" bindchange="onPickDate">
+            <view class="pickerVal">{{scheduleDate}}</view>
+          </picker>
+        </view>
+        <view class="sheetBox">
+          <view class="sheetLabel">时间</view>
+          <picker mode="time" value="{{scheduleTime}}" bindchange="onPickTime">
+            <view class="pickerVal">{{scheduleTime}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view style="height: 40rpx;"></view>
+  </view>
+</view>

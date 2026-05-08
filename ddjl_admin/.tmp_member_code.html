@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-dim": "#70030f",
+                    "on-error": "#fff7f6",
+                    "on-tertiary-fixed": "#4d1b28",
+                    "primary-container": "#ffa8c0",
+                    "surface-container-highest": "#e1e2e6",
+                    "secondary-fixed-dim": "#e0ccff",
+                    "on-primary-fixed-variant": "#890c44",
+                    "inverse-primary": "#fd6c9c",
+                    "on-secondary-fixed-variant": "#6a4b9f",
+                    "secondary-container": "#ebdcff",
+                    "error-container": "#f56965",
+                    "primary-fixed-dim": "#ff92b2",
+                    "primary": "#ac2d5e",
+                    "surface-container": "#edeef1",
+                    "on-secondary": "#fef7ff",
+                    "tertiary-fixed": "#ffb2c1",
+                    "on-tertiary-fixed-variant": "#703845",
+                    "on-secondary-fixed": "#4c2d81",
+                    "on-primary-fixed": "#550027",
+                    "secondary-dim": "#614296",
+                    "surface-container-high": "#e7e8eb",
+                    "on-surface": "#303336",
+                    "outline": "#787b7e",
+                    "surface": "#faf9fb",
+                    "tertiary-fixed-dim": "#efa4b3",
+                    "surface-bright": "#faf9fb",
+                    "secondary": "#6d4ea3",
+                    "primary-fixed": "#ffa8c0",
+                    "on-primary-container": "#7c003b",
+                    "tertiary-dim": "#7c414f",
+                    "on-surface-variant": "#5d5f63",
+                    "tertiary": "#8a4d5b",
+                    "on-tertiary-container": "#652f3c",
+                    "on-tertiary": "#fff7f7",
+                    "surface-tint": "#ac2d5e",
+                    "inverse-on-surface": "#9c9d9f",
+                    "surface-dim": "#d8dade",
+                    "on-error-container": "#65000b",
+                    "tertiary-container": "#ffb2c1",
+                    "outline-variant": "#b0b2b6",
+                    "on-primary": "#fff7f7",
+                    "surface-container-low": "#f4f3f6",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#ebdcff",
+                    "primary-dim": "#9c1f52",
+                    "on-secondary-container": "#604195",
+                    "error": "#ac3434",
+                    "surface-variant": "#e1e2e6",
+                    "inverse-surface": "#0d0e10",
+                    "on-background": "#303336",
+                    "background": "#faf9fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans", "PingFang SC"],
+                    "body": ["Be Vietnam Pro", "PingFang SC"],
+                    "label": ["Be Vietnam Pro", "PingFang SC"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', 'PingFang SC', sans-serif; }
+        /* Keep a consistent "课表页" shadow rhythm across blocks */
+        .editorial-shadow { box-shadow: 0 4px 32px 0 rgba(172, 45, 94, 0.06); }
+        /* Shared rectangular block scale to match schedule page rhythm */
+        .rect-card { border-radius: 16px; }
+        .stat-card { height: 112px; }
+        .member-row { min-height: 92px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#faf9fb] dark:bg-slate-950 flex justify-between items-center px-6 py-4 w-full bg-gradient-to-b from-[#f4f3f6] to-transparent">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ac2d5e] dark:text-[#ffa8c0]">menu</span>
+<h1 class="font-['Plus_Jakarta_Sans','PingFang_SC'] text-lg font-semibold tracking-tight text-[#ac2d5e] dark:text-[#ffa8c0]">叮叮教练</h1>
+</div>
+<button class="flex items-center gap-2 bg-gradient-to-br from-[#ac2d5e] to-[#ffa8c0] text-white px-4 py-2 rounded-full shadow-sm active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span class="text-sm font-medium">邀请</span>
+</button>
+</header>
+<!-- Content Area -->
+<main class="mt-20 px-6">
+<!-- Search and Filter Section -->
+<div class="mb-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest border-none rounded-2xl shadow-sm focus:ring-2 focus:ring-primary-fixed placeholder:text-outline-variant text-on-surface transition-all" placeholder="搜索会员姓名或联系方式..." type="text"/>
+</div>
+</div>
+<!-- Membership List Stats Placeholder (Bento Style) -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-surface-container-lowest p-5 rect-card stat-card border-none editorial-shadow flex flex-col justify-between">
+<p class="text-secondary text-xs font-semibold mb-1">总会员</p>
+<p class="text-2xl font-headline font-bold text-on-surface tracking-tight">128</p>
+</div>
+<div class="bg-primary-container/10 p-5 rect-card stat-card border-none editorial-shadow flex flex-col justify-between">
+<p class="text-primary text-xs font-semibold mb-1">本周新增</p>
+<div class="flex items-center gap-2">
+<p class="text-2xl font-headline font-bold text-on-surface tracking-tight">12</p>
+<span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full">NEW</span>
+</div>
+</div>
+</div>
+<!-- Section Title & Instruction -->
+<div class="flex justify-between items-end mb-4 px-1">
+<h2 class="text-xl font-semibold text-on-surface tracking-tight">会员名录</h2>
+<p class="text-xs text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">swipe_left</span>
+                左滑可进行快速操作
+            </p>
+</div>
+<!-- Membership List Container -->
+<div class="space-y-4">
+<!-- Member Item: Active/New -->
+<div class="relative overflow-hidden group">
+<div class="flex items-center p-5 bg-surface-container-lowest rect-card member-row editorial-shadow border-none relative z-10 translate-x-0 transition-transform">
+<div class="relative">
+<img alt="Avatar" class="w-14 h-14 rounded-full bg-surface-container" data-alt="professional portrait of a young chinese man with clean haircut, friendly expression, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS_OFdaEgd-sFnD4DdZT7tQEb30mTmCxY8y0a7ORPG7BMc1OyPCqOV4NDt8F_y6h2DFDDJC2QDpRkN8VcnzGO7EGsLtw3un-SBuu6cMzhlh_z653yboxgfU8MYDYnWo7_I_3MGKN4dyjERimjpcBhzFFYKVZVWPliyKCrvsqm64knmfFSAkAYK_SyfrdOLtg9I9aOlUgFsxocnolt7b4SO04sj4Lacp6d56fWJYFGcubfZB0Me7gBVPsreJi5CorYMJwXBegcEfWk"/>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">NEW</span>
+</div>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-on-surface">张伟</h3>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">chevron_right</span>
+</div>
+<div class="flex gap-4 mt-1">
+<p class="text-xs text-on-surface-variant">未上 <span class="text-primary font-bold">3</span> 节</p>
+<p class="text-xs text-on-surface-variant">已上 <span class="text-secondary font-bold">15</span> 节</p>
+</div>
+</div>
+</div>
+<!-- Mock Swipe Action Background -->
+<div class="absolute inset-0 bg-secondary flex justify-end items-center px-6 rect-card -z-0">
+<div class="flex gap-4 text-white">
+<span class="material-symbols-outlined">edit</span>
+<span class="material-symbols-outlined">delete</span>
+</div>
+</div>
+</div>
+<!-- Member Item: Normal -->
+<div class="relative overflow-hidden">
+<div class="flex items-center p-5 bg-surface-container-lowest rect-card member-row editorial-shadow border-none">
+<img alt="Avatar" class="w-14 h-14 rounded-full bg-surface-container" data-alt="portrait of a professional chinese woman with tied hair, wearing athletic gear, soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX2lnUfLiaZAcCNq0-5ZyRncNK9O2QzF2qsz9grJsHAJAzi2hQ5lwhnPve04xfVYMPIwJw9px1p9gv1n_PymHm45cr00eVnIhR5moQgQ9ntm5FWIHpvNcLyZUnDIML_PR2P4YEzK-DOq65GNGJgC_YUo4Xy5pUF7FT1AcqpF6Yvt1thB8QjsAOJpXbIsiTNXWoyoH8GEVa35ONbGtcMk7MzL-eqtT5EO09FOVqaaG-_6WKvKc8iZHMNYsXVJSd0HzfYUYK8yMrsOI"/>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-on-surface">李芳</h3>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">chevron_right</span>
+</div>
+<div class="flex gap-4 mt-1">
+<p class="text-xs text-on-surface-variant">未上 <span class="text-primary font-bold">1</span> 节</p>
+<p class="text-xs text-on-surface-variant">已上 <span class="text-secondary font-bold">24</span> 节</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Member Item: Warning -->
+<div class="relative overflow-hidden">
+<div class="flex items-center p-5 bg-surface-container-lowest rect-card member-row editorial-shadow border-none">
+<img alt="Avatar" class="w-14 h-14 rounded-full bg-surface-container" data-alt="close up of a middle aged chinese man smiling, warm glowing morning light, outdoor athletic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNadVJZYTUV4MsI8Ds3tbAp-JJ0sfT3NLeS0hVNSWnQxPAnu1lnkYBj3_pvQu4XKeGh08JM5k_eoafai1DmT8tF6rPR0ckiW1z3odPRWae9lrovVWv9NYTRhCj-4X2wpNX2GI-RM_tFu1yCbbpQRCPVRbc-dOOuhkN_NMIc-kZ7sywBVyUGMEWr4Ueizd-5UFYUb3ZiBEVsOQ8Hlnb1UdWlI6xCEzGKByO3wFVIXUx4dZjgqMcfFjU1_XJhnnGV5eLczn9xKRMIRk"/>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-on-surface">王军</h3>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">chevron_right</span>
+</div>
+<div class="flex gap-4 mt-1">
+<p class="text-xs text-on-surface-variant">未上 <span class="text-error font-bold">8</span> 节</p>
+<p class="text-xs text-on-surface-variant">已上 <span class="text-secondary font-bold">2</span> 节</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Member Item: Normal -->
+<div class="relative overflow-hidden">
+<div class="flex items-center p-5 bg-surface-container-lowest rect-card member-row editorial-shadow border-none">
+<img alt="Avatar" class="w-14 h-14 rounded-full bg-surface-container" data-alt="portrait of a stylish young chinese woman with glasses, professional yoga studio background, soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvviMazJwp7w6pIj89VYd3OGqBDFVZ1P8x4aObQEKsU42VCyAH4tuFElRPpATkRRRn39trJp6s2wWI_-PBobPMDWIllxCRDbptC5RAc4TQluM8cMeAzRORXwPRe9R8AR0tmYSFvLrsOVQqw6ngGX5kwTsNVKE1Z6Tyi3askOZdEDAuZa2MwDN3wrwaT7BuDMNf7ISaYkMQSfVUO6_6frOiHFhdJpbiwGP2MXR4dOeYuL9Fx4lIg9nmx4PRhNOUxPbmrjDhwGKP3XQ"/>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-on-surface">陈希</h3>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">chevron_right</span>
+</div>
+<div class="flex gap-4 mt-1">
+<p class="text-xs text-on-surface-variant">未上 <span class="text-primary font-bold">2</span> 节</p>
+<p class="text-xs text-on-surface-variant">已上 <span class="text-secondary font-bold">10</span> 节</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Member Item: Normal -->
+<div class="relative overflow-hidden">
+<div class="flex items-center p-5 bg-surface-container-lowest rect-card member-row editorial-shadow border-none">
+<img alt="Avatar" class="w-14 h-14 rounded-full bg-surface-container" data-alt="energetic chinese man in fitness clothes, bright gymnasium lighting, blurred sports equipment background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd7mUykIQOn8vhM8Eis1d6os6WJTBDqHiy123Fi9_yu4MKqyrwMSzn_1y_zGT64yGIoFLsVHZzGYs-dviZZNIRfxFDGb6cxpv2zwCbYHhndtXq6FxM9NryCDJelP7P_SlgCRgvdZOoZlXT6UiNbisk1RlyzRJFcCWGwzjhEvcaMrBFK_CCAyJPX_2p_XRp9UZK_N7WEE3johf4tTaxJ8fHtP1pRxxWKYZcv5Zr-w5-Sca9T2zS2jr_X1HEBROmD09vgQqG2iKd44s"/>
+<div class="ml-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-on-surface">赵敏</h3>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">chevron_right</span>
+</div>
+<div class="flex gap-4 mt-1">
+<p class="text-xs text-on-surface-variant">未上 <span class="text-primary font-bold">0</span> 节</p>
+<p class="text-xs text-on-surface-variant">已上 <span class="text-secondary font-bold">32</span> 节</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full px-8 pb-6 pt-3 flex justify-between items-center bg-[#ffffff]/80 dark:bg-slate-900/80 backdrop-blur-md z-50 rounded-t-[2rem] shadow-[0_-4px_32px_0_rgba(172,45,94,0.06)]">
+<!-- Members (Active) -->
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ac2d5e] to-[#ffa8c0] text-white rounded-full px-5 py-1 active:scale-90 transition-transform duration-300 ease-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-['Plus_Jakarta_Sans','PingFang_SC'] text-[11px] font-medium">会员</span>
+</div>
+<!-- Calendar -->
+<div class="flex flex-col items-center justify-center text-[#6d4ea3] dark:text-slate-400 opacity-60 hover:bg-[#f4f3f6] dark:hover:bg-slate-800 rounded-full px-4 py-1 transition-all active:scale-90">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-['Plus_Jakarta_Sans','PingFang_SC'] text-[11px] font-medium">课表</span>
+</div>
+<!-- Stats -->
+<div class="flex flex-col items-center justify-center text-[#6d4ea3] dark:text-slate-400 opacity-60 hover:bg-[#f4f3f6] dark:hover:bg-slate-800 rounded-full px-4 py-1 transition-all active:scale-90">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-['Plus_Jakarta_Sans','PingFang_SC'] text-[11px] font-medium">统计</span>
+</div>
+</nav>
+</body></html>

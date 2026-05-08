@@ -1,0 +1,165 @@
+<view class="schedule-page">
+  <view class="capsule-safe" style="height: {{navSafeHeight}}px;"></view>
+
+  <view class="hero-row">
+    <view class="hero-left">
+      <view class="hero-title">今日课表</view>
+      <view class="hero-date">{{statDate}}</view>
+    </view>
+    <view class="date-switch" bindtap="onSwitchDate">
+      <view class="cal-icon">
+        <view class="cal-ring cal-ring-left"></view>
+        <view class="cal-ring cal-ring-right"></view>
+        <view class="cal-box"></view>
+        <view class="cal-divider"></view>
+        <view class="cal-dot d1"></view>
+        <view class="cal-dot d2"></view>
+        <view class="cal-dot d3"></view>
+      </view>
+      <view class="date-text">切换日期</view>
+    </view>
+  </view>
+
+  <view class="summary-grid">
+    <view class="summary-card light">
+      <view class="summary-icon users">
+        <view class="users-i">
+          <view class="users-head h-main"></view>
+          <view class="users-head h-left"></view>
+          <view class="users-head h-right"></view>
+          <view class="users-body b-main"></view>
+          <view class="users-body b-side"></view>
+        </view>
+      </view>
+      <view>
+        <view class="summary-value">{{studentCount}}</view>
+        <view class="summary-label">今日学员总数</view>
+      </view>
+    </view>
+
+    <view class="summary-card pink">
+      <view class="summary-icon clock">
+        <view class="clock-i">
+          <view class="clock-h hand-1"></view>
+          <view class="clock-h hand-2"></view>
+        </view>
+      </view>
+      <view>
+        <view class="summary-value white">{{totalHours}}</view>
+        <view class="summary-label white-soft">累计排课时长</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="track-head">
+    <view class="track-title">时间线轨迹</view>
+    <view class="track-more" bindtap="onTrackMoreTap">•••</view>
+  </view>
+
+  <scroll-view class="record-scroll" scroll-y="{{recordScrollEnabled}}" enhanced="true" show-scrollbar="{{false}}">
+    <view class="lesson-list">
+      <view
+        wx:for="{{lessons}}"
+        wx:key="id"
+        class="swipe-row"
+      >
+        <view class="swipe-actions">
+          <view class="swipe-btn cancel" data-id="{{item.id}}" bindtap="onActionCancelTap">取消</view>
+          <view class="swipe-btn start" data-id="{{item.id}}" bindtap="onActionStartTap">开始上课</view>
+        </view>
+
+        <view
+          class="lesson-card {{item.type === 'inclass' ? 'is-inclass' : ''}} {{item.type === 'cancelled' ? 'is-cancelled' : ''}} {{item.type === 'done' ? 'is-done' : ''}}"
+          style="transform: translateX({{item._offsetX || 0}}px);"
+          data-id="{{item.id}}"
+          bindtouchstart="onLessonTouchStart"
+          bindtouchmove="onLessonTouchMove"
+          bindtouchend="onLessonTouchEnd"
+          bindtouchcancel="onLessonTouchCancel"
+        >
+          <view class="lesson-main">
+            <view class="lesson-time-row">
+              <view class="time-dot {{item.type}}"></view>
+              <view class="lesson-time {{item.type === 'cancelled' ? 'line-fix' : ''}}">{{item.time}}</view>
+            </view>
+            <view class="lesson-place-row">
+              <view class="place-dot {{item.type}}"></view>
+              <view class="lesson-place {{item.type === 'cancelled' ? 'muted' : ''}}">{{item.place}}</view>
+            </view>
+          </view>
+
+          <view class="lesson-mid">
+            <view class="lesson-name {{item.type === 'cancelled' ? 'line-fix muted' : ''}}">{{item.name}}</view>
+            <view class="lesson-sub">{{item.sub}}</view>
+          </view>
+
+          <view class="lesson-end">
+            <view class="pill {{item.type}}">{{item.statusText}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-zone">
+      <view class="empty-icon">
+        <view class="empty-ring"></view>
+        <view class="empty-tick"></view>
+        <view class="empty-plus-h"></view>
+        <view class="empty-plus-v"></view>
+      </view>
+      <view class="empty-title">没有更多课程了</view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{showCalendar}}" class="calendar-mask" bindtap="onCalendarMaskTap">
+    <view class="calendar-panel" catchtap="onCalendarPanelTap">
+      <view class="calendar-head">
+        <view class="calendar-nav" bindtap="onCalendarPrevMonth">‹</view>
+        <view class="calendar-month">{{calendarMonthText}}</view>
+        <view class="calendar-nav" bindtap="onCalendarNextMonth">›</view>
+      </view>
+
+      <view class="calendar-week-row">
+        <view wx:for="{{weekDays}}" wx:key="*this" class="calendar-week">{{item}}</view>
+      </view>
+
+      <view class="calendar-grid">
+        <view
+          wx:for="{{calendarDays}}"
+          wx:key="key"
+          class="calendar-cell {{item.empty ? 'is-empty' : ''}} {{item.isToday ? 'is-today' : ''}} {{item.isSelected ? 'is-selected' : ''}}"
+          data-iso="{{item.iso}}"
+          bindtap="onPickCalendarDay"
+        >
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+
+      <view class="calendar-actions">
+        <view class="calendar-btn cancel" bindtap="onCalendarCancel">取消</view>
+        <view class="calendar-btn confirm" bindtap="onCalendarConfirm">确认</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showActionDialog}}" class="action-mask" bindtap="onActionDialogMaskTap">
+    <view class="action-panel" catchtap="onActionDialogPanelTap">
+      <view class="action-title">{{actionDialogTitle}}</view>
+      <view class="action-content">{{actionDialogContent}}</view>
+
+      <input
+        wx:if="{{actionDialogMode === 'cancel'}}"
+        class="action-remark"
+        placeholder="请输入取消原因（可选）"
+        value="{{actionRemark}}"
+        maxlength="40"
+        bindinput="onActionRemarkInput"
+      />
+
+      <view class="action-actions">
+        <view class="action-btn cancel" bindtap="onActionDialogCancel">取消</view>
+        <view class="action-btn confirm" bindtap="onActionDialogConfirm">确认</view>
+      </view>
+    </view>
+  </view>
+</view>
